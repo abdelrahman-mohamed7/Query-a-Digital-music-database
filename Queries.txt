@@ -1,0 +1,33 @@
+/* Query 1 */
+SELECT count(t.Name) NUMBEROFSONGS , G.Name
+FROM genre G join Track t
+on  G.GenreId = t.GenreId 
+GROUP by g.name
+order by 1 
+
+
+/* Query 2 */
+SELECT e.FirstName || " " || e.LastName nameofemp , count(c.CustomerId) NOofcustomers
+from Employee e JOIN Customer c 
+on e.EmployeeId = c.SupportRepId 
+GROUP by 1
+order by 2 
+
+/* Query 3 */
+
+SELECT A.Name "Name of the artist" , G.Name"the genre" , count(T.Name) NOofsongs
+from Artist A, Album B , TRACK T, GENRE G
+WHERE A.ArtistId = B.ArtistId 
+AND b.AlbumId = T.AlbumId 
+AND t.GenreId = g.GenreId
+GROUP by 1 ,2
+order by 3 DESC
+limit 10;
+
+/* Query 4 */
+
+SELECT i.BillingCity , count(il.Invoiceid) "invoice_counts"
+from invoice i join InvoiceLine il
+on i.InvoiceId = il.InvoiceId
+group by 1
+order by 2 desc;
